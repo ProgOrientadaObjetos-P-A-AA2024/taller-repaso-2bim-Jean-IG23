@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package paquete02;
+package paquete01;
 
 import paquete01.Propietario;
 
@@ -11,9 +11,9 @@ import paquete01.Propietario;
  * @author utpl
  */
 public abstract class Vehiculo {
-    private Propietario user;
-    private String marca;
-    private double precioBase;
+    protected Propietario user;
+    protected String marca;
+    protected double precioBase;
     protected double precioFinal;
 
     public Vehiculo(Propietario u, String m, double pB) {

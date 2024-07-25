@@ -4,6 +4,7 @@
  */
 package paquete02;
 
+import paquete01.Vehiculo;
 import paquete01.Propietario;
 
 /**
@@ -16,13 +17,11 @@ public class TipoCamioneta extends Vehiculo {
     private double valorImpo;
     private double seguroMan;
 
-    public TipoCamioneta(double pI, double vI, double sM, Propietario u, String m, double pB) {
+    public TipoCamioneta(double pI, Propietario u, String m, double pB) {
         super(u, m, pB);
         porcentajeImpo = pI;
-        valorImpo = vI;
-        seguroMan = sM;
     }
-    
+
     public double obtenerPorcentajeImpo() {
         return porcentajeImpo;
     }
@@ -35,19 +34,32 @@ public class TipoCamioneta extends Vehiculo {
         return valorImpo;
     }
 
-    public void establecerValorImpo(double vI) {
-        valorImpo = vI;
+    public void establecerValorImpo() {
+        valorImpo = precioBase * (porcentajeImpo / 100);
     }
 
     public double obtenerSeguroMan() {
         return seguroMan;
     }
 
-    public void establecerSeguroMan(double sM) {
-        seguroMan = sM;
+    public void establecerSeguroMan() {
+        seguroMan = valorImpo * 1.5;
     }
-    
+
     public void calcularPrecioFinal() {
+        precioFinal = precioBase + valorImpo
+                + seguroMan;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Vehiculo Tipo Camioneta \n "
+                + "Porcentaje Adicional de Importacion: %.2f\n"
+                + "Valor Adicional de Importacion: %.2f\n"
+                + "Seguro Adicional de Mantenimiento: %.2f\n"
+                + "Precio Final: %.2f\n"
+                + super.toString(), porcentajeImpo,
+                valorImpo, seguroMan, precioFinal);
 
     }
 }
